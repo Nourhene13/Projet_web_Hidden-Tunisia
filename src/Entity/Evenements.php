@@ -45,7 +45,7 @@ class Evenements
     /**
      * @var string
      *
-     * @ORM\Column(name="lieux_evenement", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="lieux_evenement", type="string", length=100, nullable=false)
      */
     private $lieuxEvenement;
 
@@ -71,16 +71,6 @@ class Evenements
     private $image;
 
     /**
-     * @var \Utilisateurs
-     *
-     * @ORM\ManyToOne(targetEntity="Utilisateurs")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_utilisateur", referencedColumnName="id_utilisateur")
-     * })
-     */
-    private $idUtilisateur;
-
-    /**
      * @var \Invites
      *
      * @ORM\ManyToOne(targetEntity="Invites")
@@ -89,6 +79,16 @@ class Evenements
      * })
      */
     private $idInvite;
+
+    /**
+     * @var \Utilisateurs
+     *
+     * @ORM\ManyToOne(targetEntity="Utilisateurs")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_utilisateur", referencedColumnName="id_utilisateur")
+     * })
+     */
+    private $idUtilisateur;
 
 
 }

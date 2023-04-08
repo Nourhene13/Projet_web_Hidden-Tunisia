@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Planning
  *
- * @ORM\Table(name="planning", indexes={@ORM\Index(name="fk_evenement_plan", columns={"id_evenement"}), @ORM\Index(name="fk_circuit_plan", columns={"id_circuit"})})
+ * @ORM\Table(name="planning", indexes={@ORM\Index(name="fk_circuit_plan", columns={"id_circuit"}), @ORM\Index(name="fk_evenemt_plan", columns={"id_evenement"})})
  * @ORM\Entity
  */
 class Planning
@@ -43,16 +43,6 @@ class Planning
     private $emplacement;
 
     /**
-     * @var \Circuits
-     *
-     * @ORM\ManyToOne(targetEntity="Circuits")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_circuit", referencedColumnName="id_circuit")
-     * })
-     */
-    private $idCircuit;
-
-    /**
      * @var \Evenements
      *
      * @ORM\ManyToOne(targetEntity="Evenements")
@@ -61,6 +51,16 @@ class Planning
      * })
      */
     private $idEvenement;
+
+    /**
+     * @var \Circuits
+     *
+     * @ORM\ManyToOne(targetEntity="Circuits")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_circuit", referencedColumnName="id_circuit")
+     * })
+     */
+    private $idCircuit;
 
 
 }

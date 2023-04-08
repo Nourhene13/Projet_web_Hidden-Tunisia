@@ -29,6 +29,13 @@ class Permissions
     private $nomPermission;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="description_permission", type="string", length=1000, nullable=false)
+     */
+    private $descriptionPermission;
+
+    /**
      * @var \Modules
      *
      * @ORM\ManyToOne(targetEntity="Modules")
@@ -38,5 +45,19 @@ class Permissions
      */
     private $idModule;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Roles", mappedBy="idPermission")
+     */
+    private $idRole = array();
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idRole = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 }

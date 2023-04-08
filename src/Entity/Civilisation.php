@@ -57,6 +57,13 @@ class Civilisation
     private $descriptionCivilisation;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=344, nullable=false)
+     */
+    private $image;
+
+    /**
      * @var \Utilisateurs
      *
      * @ORM\ManyToOne(targetEntity="Utilisateurs")

@@ -28,5 +28,12 @@ class Modules
      */
     private $nomModule;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description_module", type="string", length=1000, nullable=false)
+     */
+    private $descriptionModule;
+
 
 }

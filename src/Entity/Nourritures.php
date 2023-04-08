@@ -64,14 +64,11 @@ class Nourritures
     private $typeNourriture;
 
     /**
-     * @var \Civilisation
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Civilisation")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_civilisation", referencedColumnName="id_civilisation")
-     * })
+     * @ORM\Column(name="image", type="string", length=344, nullable=false)
      */
-    private $idCivilisation;
+    private $image;
 
     /**
      * @var \Utilisateurs
@@ -82,6 +79,16 @@ class Nourritures
      * })
      */
     private $idUtilisateur;
+
+    /**
+     * @var \Civilisation
+     *
+     * @ORM\ManyToOne(targetEntity="Civilisation")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_civilisation", referencedColumnName="id_civilisation")
+     * })
+     */
+    private $idCivilisation;
 
 
 }

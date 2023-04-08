@@ -31,9 +31,9 @@ class Circuits
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_debut_circuit", type="date", nullable=false)
+     * @ORM\Column(name="date_debut_circuit", type="date", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
      */
-    private $dateDebutCircuit;
+    private $dateDebutCircuit = 'CURRENT_TIMESTAMP';
 
     /**
      * @var \DateTime

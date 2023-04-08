@@ -31,9 +31,9 @@ class Reclamations
     /**
      * @var string
      *
-     * @ORM\Column(name="etat_reclamation", type="string", length=50, nullable=false)
+     * @ORM\Column(name="etat_reclamation", type="string", length=50, nullable=false, options={"default"="encours"})
      */
-    private $etatReclamation;
+    private $etatReclamation = 'encours';
 
     /**
      * @var string
@@ -43,16 +43,16 @@ class Reclamations
     private $textReclamation;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      *
-     * @ORM\Column(name="date_reponse", type="date", nullable=false)
+     * @ORM\Column(name="date_reponse", type="date", nullable=true)
      */
     private $dateReponse;
 
     /**
-     * @var string
+     * @var string|null
      *
-     * @ORM\Column(name="text_reponse", type="string", length=7000, nullable=false)
+     * @ORM\Column(name="text_reponse", type="string", length=7000, nullable=true)
      */
     private $textReponse;
 

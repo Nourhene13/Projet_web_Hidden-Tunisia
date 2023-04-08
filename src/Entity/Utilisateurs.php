@@ -50,11 +50,11 @@ class Utilisateurs
     private $numeroTelephone;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="mote de passe", type="integer", nullable=false)
+     * @ORM\Column(name="mtp", type="string", length=32, nullable=false)
      */
-    private $moteDePasse;
+    private $mtp;
 
     /**
      * @var string
@@ -62,6 +62,20 @@ class Utilisateurs
      * @ORM\Column(name="pseudo", type="string", length=50, nullable=false)
      */
     private $pseudo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=500, nullable=false, options={"default"="C:\Users\msi\Documents\NetBeansProjects\FinalPiDev\src\gui\image\icon user.png"})
+     */
+    private $image = 'C:\\Users\\msi\\Documents\\NetBeansProjects\\FinalPiDev\\src\\gui\\image\\icon user.png';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_naissance", type="date", nullable=false)
+     */
+    private $dateNaissance;
 
     /**
      * @var \Roles

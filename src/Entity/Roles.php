@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Roles
  *
- * @ORM\Table(name="roles", indexes={@ORM\Index(name="fk_permission", columns={"id_permission"})})
+ * @ORM\Table(name="roles")
  * @ORM\Entity
  */
 class Roles
@@ -29,14 +29,33 @@ class Roles
     private $nomRole;
 
     /**
-     * @var \Permissions
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Permissions")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_permission", referencedColumnName="id_permission")
-     * })
+     * @ORM\Column(name="description_role", type="string", length=1000, nullable=false)
      */
-    private $idPermission;
+    private $descriptionRole;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Permissions", inversedBy="idRole")
+     * @ORM\JoinTable(name="role_pemission",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_role", referencedColumnName="id_role")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_permission", referencedColumnName="id_permission")
+     *   }
+     * )
+     */
+    private $idPermission = array();
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idPermission = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 }
