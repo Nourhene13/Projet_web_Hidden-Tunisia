@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<h3 class="mt-5 mb-5">Gestion Abonnement</h3>
+			<div class="col-md-6 offset-md3">
+				{{ form_start(form) }}
+				<div class="form-group">
+					{{ form_label(form.date_ab) }}
+					{{ form_widget(form.date_ab,{'attr':{'class':'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.date_exp) }}
+					{{ form_widget(form.date_exp,{'attr':{'class':'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.categorie_ab) }}
+					{{ form_widget(form.categorie_ab,{'attr':{'class':'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					<button class="btn btn-info mt-2 text-white">Submit</button>
+				</div>
+				{{ form_end(form) }}
+
+			</div>
+		</div>
+	</div>
+{% endblock %}
