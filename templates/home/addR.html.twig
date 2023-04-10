@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<br><br><br><br><br><br><br><br>
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title mb-4">Ajouter Reclamation</h4>
+            <form method="POST">
+              {{ form_start(f, {'attr': {'novalidate': 'novalidate'}}) }}
+              {{ form_widget(f) }}
+              {{ form_end(f) }}
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,7 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+delete_rect:
+    path: '/delete/{id}'
+    controller: App\Controller\RecTypeController::delete
+    methods: ['DELETE']
