@@ -7,19 +7,32 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\CircuitType;
-
+use App\Repository\CircuitsRepository;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CircuitController extends AbstractController
 {
-    #[Route('/circuit', name: 'app_circuits')]
+    #[Route('/circuitback', name: 'app_circuits')]
     public function index(): Response
     {
         $data = $this->getDoctrine()->getRepository(Circuits::class)->findAll();
-        return $this->render('circuit/index.html.twig', [
+        
+         return $this->render('circuit/afficherback.html.twig', [
             'list' => $data,
         ]);
     }
+
+    #[Route('/circuitAffichage', name: 'app_circuitAfficher')]
+    public function afficher(): Response
+    {
+        $data = $this->getDoctrine()->getRepository(Circuits::class)->findAll();
+        return $this->render('circuit\afficherfront.html.twig', [
+            'data' => $data,
+        ]);
+    }
+
+
+   
     #[Route('/create', name: 'create')]
     public function create(Request $request): Response
     {
@@ -65,4 +78,24 @@ class CircuitController extends AbstractController
         $this->addFlash('notice', 'Deleted successfuly!!');
         return $this->redirectToRoute('app_circuits');
     }
+
+
+
+
+   
+    
+    
+
+        
+
+        
+
+     
+
+
+
+
+
+
+
 }

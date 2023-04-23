@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+<br/><br/><br/><br/><br/>
+
+<div class="auto-container">
+    <div class="title-box">
+        <h2>Nos Evenements :</h2>
+    </div>
+    
+    <div class="row clearfix">
+        {% for p in data %}
+            <div class="shop-item col-lg-3 col-md-6 col-sm-12">
+                <div class="inner-box">
+                    <div class="image">
+                        <a href="product-detail.html"><img src="images\LOGOEV.png" alt=""></a>
+                        <div class="overlay-box">
+                            <ul class="option-box">
+                                <li><a href="#"><span class="far fa-heart"></span></a></li>
+                                <li><a href="#"><span class="fa fa-shopping-bag"></span></a></li>
+                                <li><a href="images/resource/products/1.jpg" class="lightbox-image" data-fancybox="products"><span class="fa fa-search"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="tag-banner">New</div>
+                    </div>
+                    <div class="lower-content">
+                        <h3><a href="product-detail.html">{{ p.getTitreEvenement }}</a></h3>
+                        Description: <div class="price">{{ p.getDescriptionEvenement }}</div>
+                        Prix: <a href="#">{{ p.getPrixEvenement }}</a><br/>
+                        Type: <a href="#">{{ p.getTypeEvenement }}</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center">
+            <ul class="pagination">
+                {{ knp_pagination_render(data) }}
+            </ul>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

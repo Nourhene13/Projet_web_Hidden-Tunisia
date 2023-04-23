@@ -1,0 +1,72 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!
+{% endblock %}
+
+{% block body %}
+
+<br/> <br/> <br/> <br/> <br/>
+ 
+<div class="auto-container">
+    <!--Sec Title-->
+    <div class="title-box">
+        <h2>Nos Circuit :</h2>
+    </div>
+    
+    <div class="row clearfix">
+        {% for p in data %}
+
+        
+        <!--Shop Item-->
+        <div class="shop-item col-lg-3 col-md-6 col-sm-12">
+            <div class="inner-box">
+                <div class="image">
+                    <a href="product-detail.html"><img src="images\LOGOEV.png" alt=""></a>
+                    <div class="overlay-box">
+                        <ul class="option-box">
+                            <li><a href="#"><span class="far fa-heart"></span></a></li>
+                            <li><a href="#"><span class="fa fa-shopping-bag"></span></a></li>
+                            <li><a href="images/resource/products/1.jpg" class="lightbox-image" data-fancybox="products"><span class="fa fa-search"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="tag-banner">New</div>
+                </div>
+                <div class="lower-content">
+                    <h3><a href="product-detail.html"> {{p.getNomCircuit}} </a></h3>
+                    Description:   <div class="price"> {{p.getDescriptionCircuit}}</div>
+
+
+                    Nbr place dispo : </strong><a href="#">{{p.getNbrPlaceDispo}}</a> <br/>
+                    Nbr de Jour: </strong><a href="#">{{p.getNbrJourCircuit}}</a>
+
+
+                   
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+        
+       
+   
+    
+    </div>
+
+    <div class="shop-pagination">
+        <ul class="clearfix">
+            <li class="prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>
+            <li><a href="#">0</a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li class="next"><a href="#"><i class="fa fa-angle-right"></i></a></li>
+        </ul>
+    </div>
+
+</div>
+
+
+
+
+
+{% endblock %}

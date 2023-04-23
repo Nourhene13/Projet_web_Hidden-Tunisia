@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body %}
+<div> <br><br><br><br><br><br><br><br></div>
 	<div class="container">
 		{% for message in app.flashes('notice') %}
 			<div class="alert alert-success mt-4 mb-b">
@@ -14,7 +15,7 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th scope="col">#</th>
+					{#<th scope="col">#</th>#}
 					<th scope="col">ID</th>
 					<th scope="col">Point Depat Circuit</th>
 					<th scope="col">Date Fin Circuit</th>

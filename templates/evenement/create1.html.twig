@@ -5,34 +5,45 @@
 		<div class="row">
 			<h3 class="mt-5 mb-5">Ajouter un Evenement</h3>
 			<div class="col-md-6 offset-md3">
-				{{ form_start(form) }}
+				{{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
 				<div class="form-group">
 					{{ form_label(form.titre_evenement) }}
 					{{ form_widget(form.titre_evenement,{'attr':{'class':'form-control'}}) }}
+					{{form_errors(form.titre_evenement,{'attr':{'class':'text-danger'}})}}
 				</div>
 				<div class="form-group">
 					{{ form_label(form.type_evenement) }}
 					{{ form_widget(form.type_evenement,{'attr':{'class':'form-control'}}) }}
+					{{form_errors(form.type_evenement,{'attr':{'class':'text-danger'}})}}
 				</div>
                 <div class="form-group">
 					{{ form_label(form.date_evenement) }}
 					{{ form_widget(form.date_evenement,{'attr':{'class':'form-control'}}) }}
+					{{form_errors(form.date_evenement,{'attr':{'class':'text-danger'}})}}
+
 				</div>
                 <div class="form-group">
 					{{ form_label(form.lieux_evenement) }}
 					{{ form_widget(form.lieux_evenement,{'attr':{'class':'form-control'}}) }}
+					{{form_errors(form.lieux_evenement,{'attr':{'class':'text-danger'}})}}
+
 				</div>
                 <div class="form-group">
 					{{ form_label(form.prix_evenement) }}
 					{{ form_widget(form.prix_evenement,{'attr':{'class':'form-control'}}) }}
+					{{form_errors(form.prix_evenement,{'attr':{'class':'text-danger'}})}}
+
 				</div>
                 <div class="form-group">
 					{{ form_label(form.description_evenement) }}
 					{{ form_widget(form.description_evenement,{'attr':{'class':'form-control'}}) }}
+					{{form_errors(form.description_evenement,{'attr':{'class':'text-danger'}})}}
 				</div>
                 <div class="form-group">
 					{{ form_label(form.image) }}
 					{{ form_widget(form.image,{'attr':{'class':'form-control'}}) }}
+					{{form_errors(form.image,{'attr':{'class':'text-danger'}})}}
+
 				</div>
                
 				<div class="form-group">

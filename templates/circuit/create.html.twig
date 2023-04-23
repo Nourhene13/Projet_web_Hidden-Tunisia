@@ -5,34 +5,49 @@
 		<div class="row">
 			<h3 class="mt-5 mb-5">Ajouter un Circuit </h3>
 			<div class="col-md-6 offset-md3">
-				{{ form_start(form) }}
-				<div class="form-group">
+				{{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}			
+					<div class="form-group">
 					{{ form_label(form.point_depat_circuit) }}
 					{{ form_widget(form.point_depat_circuit,{'attr':{'class':'form-control'}}) }}
+					{{form_errors(form.point_depat_circuit,{'attr':{'class':'text-danger'}})}}
+
 				</div>
 				<div class="form-group">
 					{{ form_label(form.date_debut_circuit) }}
 					{{ form_widget(form.date_debut_circuit,{'attr':{'class':'form-control'}}) }}
+					{{form_errors(form.date_debut_circuit,{'attr':{'class':'text-danger'}})}}
+
 				</div>
                 <div class="form-group">
 					{{ form_label(form.date_fin_circuit) }}
 					{{ form_widget(form.date_fin_circuit,{'attr':{'class':'form-control'}}) }}
+					{{form_errors(form.date_fin_circuit,{'attr':{'class':'text-danger'}})}}
+
 				</div>
                 <div class="form-group">
 					{{ form_label(form.nbr_place_dispo) }}
 					{{ form_widget(form.nbr_place_dispo,{'attr':{'class':'form-control'}}) }}
+					{{form_errors(form.nbr_place_dispo,{'attr':{'class':'text-danger'}})}}
+
+
 				</div>
                 <div class="form-group">
 					{{ form_label(form.description_circuit) }}
 					{{ form_widget(form.description_circuit,{'attr':{'class':'form-control'}}) }}
+					{{form_errors(form.description_circuit,{'attr':{'class':'text-danger'}})}}
+
 				</div>
                 <div class="form-group">
 					{{ form_label(form.nbr_jour_circuit) }}
 					{{ form_widget(form.nbr_jour_circuit,{'attr':{'class':'form-control'}}) }}
+					{{form_errors(form.nbr_jour_circuit,{'attr':{'class':'text-danger'}})}}
+
 				</div>
                 <div class="form-group">
 					{{ form_label(form.nom_circuit) }}
 					{{ form_widget(form.nom_circuit,{'attr':{'class':'form-control'}}) }}
+					{{form_errors(form.nom_circuit,{'attr':{'class':'text-danger'}})}}
+
 				</div>
                
 				<div class="form-group">

@@ -3,8 +3,12 @@
 namespace App\Form;
 
 use App\Entity\Evenements;
+use App\Validator\NoInappropriateWords;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Intl\Countries;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class EvenementType extends AbstractType
@@ -16,8 +20,13 @@ class EvenementType extends AbstractType
             ->add('type_evenement')
             ->add('date_evenement')
             ->add('lieux_evenement')
+            ->add('lieux_evenement', ChoiceType::class, [
+                'label' => 'Select a country',
+                'choices' => array_flip(Countries::getNames()),
+            ])
             ->add('prix_evenement')
-            ->add('description_evenement')
+            ->add('description_evenement', TextType::class, 
+            [  'constraints' => [  new NoInappropriateWords(), ], ])
             ->add('image')
             ->add('utilisateur')
         ;

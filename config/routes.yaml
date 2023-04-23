@@ -1,3 +1,7 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+stat_circuit:
+    path: circuit/circuit
+    controller: src\Controller\CircuitController.php
+
