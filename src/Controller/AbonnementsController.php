@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use App\Entity\PdfGeneratorService;
 
 class AbonnementsController extends AbstractController
 {
@@ -64,5 +64,23 @@ class AbonnementsController extends AbstractController
         $em->flush();
         $this->addFlash('notice', 'Deleted successfuly!!');
         return $this->redirectToRoute('app_abonnements');
+    }
+    #[Route('/abonnements/pdf', name: 'generator_service_abonnements')]
+    public function pdfService(): Response
+    {
+        $reservations = $this->getDoctrine()
+            ->getRepository(Abonnements::class)
+            ->findAll();
+
+
+
+        $html = $this->renderView('pdf/index1.html.twig', ['list' => $reservations]);
+        $pdfGeneratorService = new PdfGeneratorService;
+        $pdf = $pdfGeneratorService->generatePdf($html);
+
+        return new Response($pdf, 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="document.pdf"',
+        ]);
     }
 }

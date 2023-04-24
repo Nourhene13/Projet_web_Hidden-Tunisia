@@ -38,29 +38,43 @@ class ReservationsRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    public function sortByAscDate(): array
+    {
+        return $this->createQueryBuilder('c')
+            ->orderBy('c.horaireC', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 
-//    /**
-//     * @return Reservations[] Returns an array of Reservations objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('r.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function sortByDescDate(): array
+    {
+        return $this->createQueryBuilder('c')
+            ->orderBy('c.horaireC', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 
-//    public function findOneBySomeField($value): ?Reservations
-//    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    /**
+     * @return Reservations[] Returns an array of Reservations objects
+     */
+    public function findOneByEvenement($value): array
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.evenement = :val')
+            ->setParameter('val', $value)
+            ->orderBy('r.id', 'ASC')
+            ->setMaxResults(100)
+            ->getQuery()
+            ->getResult();
+    }
+
+    //    public function findOneBySomeField($value): ?Reservations
+    //    {
+    //        return $this->createQueryBuilder('r')
+    //            ->andWhere('r.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

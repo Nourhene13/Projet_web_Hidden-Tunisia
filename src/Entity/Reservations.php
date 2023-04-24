@@ -36,6 +36,9 @@ class Reservations
     #[Assert\NotBlank(message: "Please  fill out the title")]
     private ?Evenements $evenement = null;
 
+    #[ORM\Column]
+    private ?int $nbplaces = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -97,6 +100,18 @@ class Reservations
     public function setEvenement(?Evenements $evenement): self
     {
         $this->evenement = $evenement;
+
+        return $this;
+    }
+
+    public function getNbplaces(): ?int
+    {
+        return $this->nbplaces;
+    }
+
+    public function setNbplaces(int $nbplaces): self
+    {
+        $this->nbplaces = $nbplaces;
 
         return $this;
     }
