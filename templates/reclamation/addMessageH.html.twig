@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container mt-5 mb-5">
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Add a new ticket type</h6>
+        </div>
+
+        <div class="form-container">
+            {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+            <div class="form-group">
+                {{ form_label(form.sender, 'Username', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(form.sender, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.sender) }}
+            </div>
+            <div class="form-group">
+
+                {{ form_label(form.contenum, 'Content', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(form.contenum, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.contenum) }}
+            </div>
+
+
+
+
+
+{#            <button type="submit" class="btn btn-primary">Add</button>#}
+
+            {{ form_end(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        </div>
+    </div>
+    </div>
+{#{{form(form, {'attr': {'novalidate': 'novalidate'}})}}#}
+{% endblock %}

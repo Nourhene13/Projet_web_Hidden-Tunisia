@@ -1,0 +1,98 @@
+{% extends 'base1.html.twig' %}
+{% block body %}
+    <form class="d-none d-md-flex ms-4">
+        <input class="form-control border-3" id="searchbar" onkeyup="search_academie()"*
+               type="search" style="border-color: #0b0b0b" placeholder="Search">
+    </form>
+ <div class="table-responsive">
+
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+<thead>
+                                <tr class="text-dark">
+    <th scope="col">User</th>
+    <th scope="col">Type
+        </th>
+    <th scope="col">Subject</th>
+          <th scope="col">Date</th>
+    <th scope="col"> <a style="color: black" href="{{path("afficheRTrieStatue")}}">Status</a></th>
+  
+
+    <th scope="col">Action</th>
+  </tr>
+                              </thead>
+
+  {% for i in recs %}
+    <tr>
+      <td>{{i.userR}}&nbsp;&nbsp;</td>
+      <td class="inexing">{{i.rect.nomT}}&nbsp;&nbsp;</td>
+      <td>{{i.sujet}}&nbsp;&nbsp;</td>
+            <td>{{i.date}}&nbsp;&nbsp;</td>
+
+      <td>
+        {% if i.etat == 'Not solved' %}
+          <span style="color:red;">{{ i.etat }}</span>
+        {% else %}
+          <span style="color:green;">{{ i.etat }}</span>
+        {% endif %}
+        &nbsp;&nbsp;&nbsp;
+      </td>
+      <style>
+  .add-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+</style>
+      <td>
+      <button class="add-button"><a href="{{ path('updateR',{'id': i.id})}}">Answer</a> &nbsp;</button></td>
+      <td>
+        <form method="post" action="{{ path('deleteR', {'id': i.id}) }}">
+          <input type="hidden" name="_method" value="DELETE">
+          <button type="submit" class="btn btn-danger">Delete</button>
+          <input type="hidden" name="_token" value="{{ csrf_token('deleteR') }}">
+        </form>
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+    <div class="align-center"> {{ knp_pagination_render(recs, 'reclamation/Pagination.html.twig') }}</div>
+    <script>
+
+        // JavaScript code
+        function search_academie() {
+            let input = document.getElementById('searchbar').value
+            input=input.toLowerCase();
+            let x = document.getElementsByClassName('inexing');
+            console.log("ffff"+input);
+
+            for (i = 0; i < x.length; i++) {
+
+                if (!x[i].innerHTML.toLowerCase().includes(input)) {
+
+                    x[i].parentNode.style.display="none";
+                }
+                else {
+                     if((x[i].parentNode.style.display)===("none")){
+
+                        (x[i].parentNode.style.display="")
+                    }
+
+
+
+                }
+            }
+        }
+
+
+
+    </script>
+
+{% endblock %}
