@@ -133,25 +133,4 @@ class ReservationsController extends AbstractController
             'query' => $query,
         ]);
     }
-
-    #[Route('/searchevenement', name: 'app_evenement_search')]
-    public function searchOffre(Request $request, ORMEntityManagerInterface $entityManager): Response
-    {
-        $evenement =   $request->get('titre_evenement');
-
-
-        if ($evenement == "") {
-            $evenement = $entityManager
-                ->getRepository(Evenement::class)
-                ->findAll();
-        } else {
-            $evenement = $entityManager
-                ->getRepository(Evenement::class)->findBy(
-                    ['titreev' => $evenement]
-                );
-        }
-        return $this->render('reservations/index.html.twig', [
-            'lst' => $evenement,
-        ]);
-    }
 }
