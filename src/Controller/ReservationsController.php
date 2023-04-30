@@ -24,6 +24,7 @@ use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
 use App\Controller\ClassMetadataInterface;
 use Symfony\Component\Form\Test\FormBuilderInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ReservationsController extends AbstractController
@@ -36,6 +37,9 @@ class ReservationsController extends AbstractController
         return $this->render('reservations/afficherback.html.twig', [
             'list' => $data, 'lst' => $data1
         ]);
+
+
+        
     }
     #[Route('/create', name: 'create')]
     public function create(Request $request): Response
@@ -114,23 +118,27 @@ class ReservationsController extends AbstractController
 
 
 
-    #[Route('/sortByAscDate', name: 'sort_by_asc_date')]
-    public function sortAscDate(ORMEntityManagerInterface $entityManager, RepositoryReservationsRepository $reservationsRepository, Request $request)
+
+    /*#[Route("/trierevenementtitreev", name: "app_triertitreev_evenement")]
+
+    public function triertitreev(ReservationsRepository $reservationsRepository): Response
     {
-        $reservations = $entityManager
-            ->getRepository(Reservations::class)
-            ->findAll();
+        $Evenement = $reservationsRepository->triertitreev();
+        return $this->render('reservations/afficherback.html.twig', [
+            'list' => $Evenement,
+        ]);
+    }*/
 
-        $query = $request->query->get('q');
-        $reservations = $this->getDoctrine()
-            ->getRepository(Reservations::class)
-            ->findAll();
 
-        $reservations = $reservationsRepository->sortByAscDate();
+    #[Route("/trierevenementdateev", name: "app_trierdateev_evenement")]
 
-        return $this->render("reservations/index.html.twig", [
-            'Reservations' => $reservations,
-            'query' => $query,
+    public function trierdateev(ReservationsRepository $reservationsRepository): Response
+    {
+     
+        $data =$reservationsRepository->trierdateev();
+
+        return $this->render('reservations/afficherback.html.twig', [
+            'list' => $data,
         ]);
     }
 }

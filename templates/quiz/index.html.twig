@@ -1,0 +1,17 @@
+{# templates/quiz/index.html.twig #}
+
+
+{% block body %}
+    <h1>Quiz</h1>
+
+    <form action="{{ path('quiz_submit') }}" method="post">
+        {% for question in questions %}
+            <div>
+                <label for="{{ question.question }}">{{ question.question }}</label>
+                <input type="text" id="{{ question.question }}" name="{{ question.question }}" required>
+            </div>
+        {% endfor %}
+
+        <button type="submit">Soumettre</button>
+    </form>
+{% endblock %}

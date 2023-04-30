@@ -370,7 +370,9 @@
 								<span>Gestion De Reclamation</span>
 							</a>
 						</li>
+						<a href="{{path('create')}}">Retour au front Reservation</a>
 
+						<a href="{{path('create1')}}">Retour au front Abonnements</a>
 
 					</ul>
 				</nav>
@@ -387,13 +389,20 @@
 								</a>
 								<h1 class="page-title">Hidden Tunisia</h1>
 							</div>
-							<div class="right">
-								<div class="input-icon xs-hide mr-4">
-									<input type="text" class="form-control" placeholder="Search for...">
-									<span class="input-icon-addon">
-										<i class="fe fe-search"></i>
-									</span>
-								</div>
+							<center>
+								<div class="input-group custom-search-form">
+									<center>
+										<div class="search-box">
+											<center>
+												<button class="btn-search">
+													<i class="fas fa-search"></i>
+												</button>
+											</center>
+											<center><input type="text" name="search" id="search" class="input-search" placeholder="Type to Search..."></center>
+
+										</div>
+									</div>
+								</center>
 								<div class="notification d-flex">
 									<div class="dropdown d-flex">
 										<a class="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-2" data-toggle="dropdown">
@@ -561,77 +570,63 @@
 				</div>
 
 
-				<div class="section-body">
-					<div class="container-fluid">
-
-
-						<div class="row clearfix">
-							<div class="col-12 col-sm-12">
-								<div class="card"></div>
-
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+				<div align="RIGHT">
+					<form action="">
+						<label for="Reservation">Trier par:</label>
+						<select id="orderBy" name="Reservation" onchange="location = this.value;">
+							<option value=""></option>
+							<option value="">titre evenement</option>
+							<option value="">Date Reservation</option>
+							<option value="{{ path('app_trierdateev_evenement') }}">date Reservation</option>
+						</select>
+					</a>
+				</form>
+			</tbody>
 		</div>
 	</body>
+</html></form><div class="section-body">
+<div class="container-fluid">
 
 
-</html></div>{% block title %}Hello MainController!{% endblock %}{% block body %}
-<div class="container">
-	{% for message in app.flashes('notice') %}
-		<div class="alert alert-success mt-4 mb-b">
-			{{ message }}
+	<div class="row clearfix">
+		<div class="col-12 col-sm-12">
+					<div class="card"></div>
+
+
 		</div>
-	{% endfor %}
-	<table class="table">
-		<thead>
-			<tr>
-				<th scope="col">#</th>
-				<th scope="col">Titre d'evenement</th>
-				<th scope="col">Date Reservation</th>
-				<th scope="col">Prix Reservation</th>
-				<th scope="col">id utilisateur</th>
-				<th scope="col">id abonnement</th>
-
-
-				<th scope="col">Action</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for data in list %}
-				<tr>
-					<th scope="row">{{ data.id }}</th>
-					<td>{{ data.getEvenement().getTitreEvenement() }}</td>
-					<td>{{ data.getDateRes()|date("m/d/Y") }}</td>
-					<td>{{ data.getPrixRes() }}</td>
-					<td>{{ data.getUtilisateur().getId() }}</td>
-					<td>{{ data.getAbonnements().getId() }}</td>
-
-
-					<td>
-						<a class="btn btn-warning" href="{{ path('update',{'id': data.id }) }}">Update</a>
-						<a class="btn btn-danger" href="{{ path('delete',{'id': data.id }) }}">Delete</a>
-
-						<a href="{{ path('app_qr_codes', {'id': data.getEvenement().getTitreEvenement()}) }}">QR Code</a>
-					</td>
-				</tr>
-			</td>
-		</tbody>
-	</tr>
-
-{% endfor %}
-<tr></tr></table><form action="{{ path('generator_service') }}" method="post">
-<select name="choice">
-	{% for data in lst %}
-		<option value="{{ data.getId() }}">{{ data.getTitreEvenement() }}</option>
-	{% endfor %}
-</select>
-
-<input type="submit" value="PDF"></form><br></a></div>{% endblock %}<div class="section-body"><footer class="footer"><div class="container-fluid"><div class="row">
-<div class="col-md-6 col-sm-12"></div>
-<div class="col-md-6 col-sm-12 text-md-right">
-	<ul class="list-inline mb-0"></ul>
-</div></div></div></footer></div></div></div><script src="/assets/bundles/lib.vendor.bundle.js"></script><script src="/assets/bundles/apexcharts.bundle.js"></script><script src="/assets/bundles/counterup.bundle.js"></script><script src="/assets/bundles/knobjs.bundle.js"></script><script src="/assets/bundles/c3.bundle.js"></script><script src="/assets/js/core.js"></script><script src="/assets/js/page/project-index.js"></script></body><!-- soccer/project/  07 Jan 2020 03:37:22 GMT --></html>
+	</div>
+</div></div></div></div></body></html></html></div>
+{% block title %}Hello MainController!{% endblock %}
+{% block body %}<div class="container">{% for message in app.flashes('notice') %}
+<div class="alert alert-success mt-4 mb-b">{{ message }}</div>{% endfor %}
+<table class="table">
+<thead><tr><th scope="col">#</th><th scope="col">Titre d'evenement</th>
+        <th scope="col">Date Reservation</th><th scope="col">Prix Reservation</th>
+		<th scope="col">id utilisateur</th><th scope="col">id abonnement</th>
+		<th scope="col">Action</th></tr></thead><tbody id="myTable"><br></tbody></a></div>
+		{% for data in list %}<tr><th scope="row">{{ data.id }}</th><td>{{ data.getEvenement().getTitreEvenement() }}</td>
+		<td>{{ data.getDateRes()|date("m/d/Y") }}</td><td>{{ data.getPrixRes() }}</td>
+		<td>{{ data.getUtilisateur().getId() }}</td><td>{{ data.getAbonnements().getId() }}</td>
+		<td><a class="btn btn-warning" href="{{ path('update',{'id': data.id }) }}">Update</a>
+		<a class="btn btn-warning" href="{{ path('delete',{'id': data.id }) }}">Supprimer</a>
+		<a href="{{ path('app_qr_codes', {'id': data.getEvenement().getTitreEvenement()}) }}">QR Code</a></td></tr></td></tbody></tr>
+		 {% endfor %} <tr></tr></table><form action="{{ path('generator_service') }}" method="post"> <select name="choice">
+		 {% for data1 in lst %}<option value="{{ data1.getId() }}">{{ data1.getTitreEvenement() }}</option>{% endfor %} </select>
+		 <input type="submit" value="PDF">{% endblock %}
+		 <div class="section-body"> <footer class="footer"><div class="container-fluid">
+		 <div class="row"><div class="col-md-6 col-sm-12"></div><div class="col-md-6 col-sm-12 text-md-right"><ul class="list-inline mb-0"></ul></div></div></div> 
+		 </footer></div></div></div><script src="/assets/bundles/lib.vendor.bundle.js"></script>
+		 <script src="/assets/bundles/apexcharts.bundle.js"></script>
+		 <script src="/assets/bundles/counterup.bundle.js"></script>
+		 <script src="/assets/bundles/knobjs.bundle.js"></script>
+		 <script src="/assets/bundles/c3.bundle.js"></script>
+		 <script src="/assets/js/core.js"></script>
+		 <script src="/assets/js/page/project-index.js"></script></body><!-- soccer/project/  07 Jan 2020 03:37:22 GMT --></html>
+		 <script>$(document).ready(function () {
+$("#search").on("keyup", function () {
+var value = $(this).val().toLowerCase();
+$("#myTable tr").filter(function () {
+$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+});
+});
+});</script>

@@ -3,4 +3,13 @@
 #    controller: App\Controller\DefaultController::index
 send_sms:
     path: /send-sms
-    controller: App\Controller\SmsController::sendSms    
+    controller: App\Controller\SmsController::sendSms   
+app_quiz:
+    path: /quiz
+    controller: App\Controller\QuizController::index
+    methods: [GET]
+    
+app_quiz_submit:
+    path: /submit
+    controller: App\Controller\QuizController::submit
+    methods: [POST]

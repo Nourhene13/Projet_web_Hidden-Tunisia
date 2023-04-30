@@ -67,6 +67,27 @@ class ReservationsRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    /*public function triertitreev()
+    {
+        $queryBuilder = $this->createQueryBuilder('i')
+            ->orderBy('i.titre_evenement', 'ASC')
+            ->getQuery()
+            ->getResult();
+        return $queryBuilder;
+    }*/
+
+
+
+
+
+    public function trierdateev()
+    {
+        $queryBuilder = $this->createQueryBuilder('i')
+            ->orderBy('i.date_res', 'ASC')
+            ->getQuery()
+            ->getResult();
+        return $queryBuilder;
+    }
 
     //    public function findOneBySomeField($value): ?Reservations
     //    {

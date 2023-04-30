@@ -1,0 +1,23 @@
+
+button.delete-button {
+  font-size: 0;
+  border: none;
+  background: none;
+}
+
+
+button.delete-button::before {
+  content: '';
+  display: inline-block;
+  width: 24px; 
+  height: 24px; 
+  background-image: url('C:\Users\wajdi\Documents\NetBeansProjects\projet_pidev_3a6\src\gui\images\1345874.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+button.delete-button:hover::before {
+  cursor: pointer;
+}
