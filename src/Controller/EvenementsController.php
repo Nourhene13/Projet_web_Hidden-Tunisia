@@ -17,6 +17,9 @@ use Swift_Mailer;
 use Symfony\Component\Mailer\MailerInterface;
 
 
+
+
+
 class EvenementsController extends AbstractController
 {
     #[Route('/evenementsBack', name: 'app_evenements')]
@@ -69,7 +72,7 @@ class EvenementsController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-    #[Route('/update1/{id}', name: 'update1')]
+    #[Route('/updateEvenement/{id}', name: 'update1')]
     public function update(Request $request, $id): Response
     {
         $Evenement = $this->getDoctrine()->getRepository(Evenements::class)->find($id);

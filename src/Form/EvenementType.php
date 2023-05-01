@@ -10,6 +10,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Intl\Countries;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints\Type;
 
 class EvenementType extends AbstractType
 {
@@ -27,7 +30,31 @@ class EvenementType extends AbstractType
             ->add('prix_evenement')
             ->add('description_evenement', TextType::class, 
             [  'constraints' => [  new NoInappropriateWords(), ], ])
-            ->add('image')
+            ->add('image', FileType::class, [
+                'label' => 'image (img file)',
+    
+                // unmapped means that this field is not associated to any entity property
+                'mapped' => false,
+    
+                // make it optional so you don't have to re-upload the PDF file
+                // every time you edit the Product details
+                'required' => false,
+    
+                // unmapped fields can't define their validation using annotations
+                // in the associated entity, so you can use the PHP constraint classes
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/jpg',
+                            'image/jpeg',
+                            'image/gif',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid image document',
+                    ])
+                ],
+            ])
             ->add('utilisateur')
         ;
     }

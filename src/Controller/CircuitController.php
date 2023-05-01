@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\CircuitType;
 use App\Repository\CircuitsRepository;
 use Symfony\Component\Routing\Annotation\Route;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
+use CMEN\GoogleChartsBundle\GoogleCharts\Options\ChartOptions;
 
 class CircuitController extends AbstractController
 {
@@ -33,7 +35,7 @@ class CircuitController extends AbstractController
 
 
    
-    #[Route('/create', name: 'create')]
+    #[Route('/AjouterCircuit', name: 'create')]
     public function create(Request $request): Response
     {
         $Circuit = new Circuits();
@@ -50,7 +52,7 @@ class CircuitController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-    #[Route('/update/{id}', name: 'update')]
+    #[Route('/updateCircuit/{id}', name: 'update')]
     public function update(Request $request, $id): Response
     {
         $Circuit = $this->getDoctrine()->getRepository(Circuits::class)->find($id);
@@ -68,7 +70,7 @@ class CircuitController extends AbstractController
         ]);
     }
 
-    #[Route('/delete/{id}', name: 'delete')]
+    #[Route('/deleteCircuit/{id}', name: 'delete')]
     public function delete($id): Response
     {
         $data = $this->getDoctrine()->getRepository(Circuits::class)->find($id);
