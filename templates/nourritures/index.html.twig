@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		{% for message in app.flashes('notice') %}
+			<div class="alert alert-success mt-4 mb-b">
+				{{ message }}
+			</div>
+		{% endfor %}
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">nom_nourriture</th>
+					<th scope="col">origine_nourriture</th>
+					<th scope="col">ingrediant</th>
+                    <th scope="col">prix_nourriture</th>
+					<th scope="col">description_nourriture</th>
+					<th scope="col">type_nourriture</th>
+					<th scope="col">image</th>
+					<th scope="col">id utilisateur</th>
+                    					<th scope="col">id civilisation</th>
+
+
+
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for data in list %}
+					<tr>
+						<th scope="row">{{ data.id }}</th>
+<td>{{ data.getNomNourriture() }}</td>
+<td>{{ data.getOrigineNourriture() }}</td>
+
+
+                       						<td>{{ data.getIngrediant() }}</td>
+                                            <td>{{ data.getPrixNourriture() }}</td>
+                       						<td>{{ data.getDescriptionNourriture() }}</td>
+
+						<td>{{ data.getTypeNourriture() }}</td>
+                        						<td>{{ data.getImage() }}</td>
+                                                        <td>{{ data.getUtilisateur().getId() }}</td>
+                        						<td>{{ data.getCivilisation().getId() }}</td>
+
+
+
+
+						<td>
+							<a class="btn btn-warning" href="{{ path('update_nourritures',{'id': data.id }) }}">Update</a>
+							<a class="btn btn-danger" href="{{ path('delete_nourritures',{'id': data.id }) }}">Delete</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+
+          <div class="container">
+<div class="sharethis-inline-share-buttons"></div>
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">NOURRITURES</h2>
+                    
+                </div>
+                
+{% endblock %}

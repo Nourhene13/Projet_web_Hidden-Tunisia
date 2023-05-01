@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block css %}
+			<!-- Stylesheets -->
+
+           
+
+			<link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
+			<link href="{{asset('css/style.css')}}" rel="stylesheet">
+			<link href="{{asset('css/responsive.css')}}" rel="stylesheet">
+			<link rel="shortcut icon" href="{{asset('images/favicon.png')}}" type="image/x-icon">
+			<link rel="icon" href="{{asset('images/favicon.png')}}" type="image/x-icon">
+
+                <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+                
+                
+                 	<link rel="stylesheet" type="text/css" href="{{ asset('css/tictactoe.css') }}">
+
+
+		{% endblock %}
+		{% block js %}
+			<script src="{{asset('js/jquery.js')}}"></script>
+			<script src="{{asset('js/popper.min.js')}}"></script>
+			<script src="{{asset('js/jquery-ui.js')}}"></script>
+			<script src="{{asset('js/bootstrap.min.js')}}"></script>
+			<script src="{{asset('js/jquery.fancybox.js')}}"></script>
+			<script src="{{asset('js/isotope.js')}}"></script>
+			<script src="{{asset('js/owl.js')}}"></script>
+			<script src="{{asset('js/wow.js')}}"></script>
+			<script src="{{asset('js/appear.js')}}"></script>
+			<script src="{{asset('js/scrollbar.js')}}"></script>
+			<script src="{{asset('js/script.js')}}"></script>
+			<script src="https://js.stripe.com/v3/"></script>
+
+			<script src="{{ asset('js/stripe.js') }}"></script>
+
+            <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+            	<script src="tictactoe.js"></script>
+
+       
+        
+ 
+ 
+</script>
+         <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=644466c865e28d00193ae8f1&product=inline-share-buttons&source=platform" async="async"></script>
+
+		{% endblock %}
+    </head>
+    <body>
+   
+     {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+   
+        {% block body %}{% endblock %}
+        <h1>Tic Tac Toe</h1>
+	<table id="board">
+		<tr>
+			<td id="0"></td>
+			<td id="1"></td>
+			<td id="2"></td>
+		</tr>
+		<tr>
+			<td id="3"></td>
+			<td id="4"></td>
+			<td id="5"></td>
+		</tr>
+		<tr>
+			<td id="6"></td>
+			<td id="7"></td>
+			<td id="8"></td>
+		</tr>
+	</table>
+	<p id="message"></p>
+	<button id="reset">Reset</button>
+    </body>
+</html>
