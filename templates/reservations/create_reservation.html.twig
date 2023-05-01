@@ -1,0 +1,42 @@
+{% extends "basefront.html.twig" %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<h3 class="mt-5 mb-5">Gestion de Reservation</h3>
+			<div class="col-md-6 offset-md3">
+				{{ form_start(form) }}
+				<div class="form-group">
+					{{ form_label(form.date_res) }}
+					{{ form_widget(form.date_res,{'attr':{'class':'form-control'}}) }}
+					{{ form_errors(form.date_res) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.prix_res) }}
+					{{ form_widget(form.prix_res,{'attr':{'class':'form-control'}}) }}
+					{{ form_errors(form.prix_res) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.Abonnements) }}
+					{{ form_widget(form.Abonnements,{'attr':{'class':'form-control'}}) }}
+					{{ form_errors(form.Abonnements) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.evenement) }}
+					{{ form_widget(form.evenement,{'attr':{'class':'form-control'}}) }}
+					{{ form_errors(form.evenement) }}
+				</div>
+				<div class="form-group">
+					{% if sms_response  %}
+						<div>{{ sms_response }}</div>
+					{% endif %}
+					<button class="btn btn-info mt-2 text-white">Reserver</button>
+				</div>
+				{{ form_end(form) }}
+
+
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

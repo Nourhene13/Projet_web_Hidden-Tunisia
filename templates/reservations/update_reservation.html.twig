@@ -1,0 +1,31 @@
+{% extends "basebackparid.html.twig" %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md3">
+				{{ form_start(form) }}
+				<div class="form-group">
+					{{ form_label(form.date_res) }}
+					{{ form_widget(form.date_res,{'attr':{'class':'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.prix_res) }}
+					{{ form_widget(form.prix_res,{'attr':{'class':'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.Abonnements) }}
+					{{ form_widget(form.Abonnements,{'attr':{'class':'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.evenement) }}
+					{{ form_widget(form.evenement,{'attr':{'class':'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					<button class="btn btn-info mt-2 text-white">update</button>
+				</div>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

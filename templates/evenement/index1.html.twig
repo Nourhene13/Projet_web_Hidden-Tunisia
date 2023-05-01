@@ -1,0 +1,58 @@
+{% extends 'baseback.html.twig' %}
+
+{% block body %}
+	<div>
+		<div class="container">
+			{% for message in app.flashes('notice') %}
+				<div class="alert alert-success mt-4 mb-b">
+					{{ message }}
+				</div>
+			{% endfor %}
+			<table class="table">
+				<thead>
+					<tr>
+						{#<th scope="col">#</th>#}
+						<th scope="col">ID</th>
+						<th scope="col">titre_evenement</th>
+						<th scope="col">type_evenement</th>
+						<th scope="col">date_evenement</th>
+						<th scope="col">lieux_evenement</th>
+						<th scope="col">prix_evenement</th>
+						<th scope="col">description_evenement</th>
+						<th scope="col">image</th>
+
+						<th scope="col">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for data in list %}
+						<tr>
+							<th scope="row">{{ data.id }}</th>
+
+
+							<td>{{ data.getTitreEvenement() }}</td>
+
+							<td>{{ data.getTypeEvenement() }}</td>
+
+							<td>{{ data.getDateEvenement()|date("m/d/Y") }}</td>
+
+							<td>{{ data.getLieuxEvenement() }}</td>
+
+							<td>{{ data.getPrixEvenement() }}</td>
+
+							<td>{{ data.getDescriptionEvenement() }}</td>
+
+							<td>{{ data.getImage() }}</td>
+
+
+							<td>
+								<a class="btn btn-warning" href="{{ path('update_',{'id': data.id }) }}">Update</a>
+								<a class="btn btn-danger" href="{{ path('delete1',{'id': data.id }) }}">Delete</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+
+		</div>
+	{% endblock %}

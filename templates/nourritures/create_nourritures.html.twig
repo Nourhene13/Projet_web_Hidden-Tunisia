@@ -1,0 +1,48 @@
+{% extends "baseback.html.twig" %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md3">
+				{{ form_start(form) }}
+				<div class="form-group">
+					{{ form_label(form.nom_nourriture) }}
+					{{ form_widget(form.nom_nourriture,{'attr':{'class':'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.origine_nourriture) }}
+					{{ form_widget(form.origine_nourriture,{'attr':{'class':'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.ingrediant) }}
+					{{ form_widget(form.ingrediant,{'attr':{'class':'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.prix_nourriture) }}
+					{{ form_widget(form.prix_nourriture,{'attr':{'class':'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.description_nourriture) }}
+					{{ form_widget(form.description_nourriture,{'attr':{'class':'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.type_nourriture) }}
+					{{ form_widget(form.type_nourriture,{'attr':{'class':'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.image) }}
+					{{ form_widget(form.image,{'attr':{'class':'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(form.civilisation) }}
+					{{ form_widget(form.civilisation,{'attr':{'class':'form-control'}}) }}
+				</div>
+				<div class="form-group">
+					<button class="btn btn-info mt-2 text-white">Submit</button>
+				</div>
+			</div>
+			{{ form_end(form) }}
+
+		</div>
+	</div>
+{% endblock %}

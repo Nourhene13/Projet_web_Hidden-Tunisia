@@ -1,0 +1,83 @@
+{% block body %}
+	<title>
+		{% block title %}PDF
+		{% endblock %}
+	</title>
+
+	<html style="border: 1px solid black; padding: 10px;">
+		<div class="container">
+
+			<img/>
+
+			<h2>
+				<FONT face="Script" color="red" size="40pt">
+
+					<center>
+						Hidden Tunisia
+
+					</center>
+
+				</FONT>
+			</h2>
+			<br>
+
+
+			<center>
+				<h2>
+					<FONT face="Script" color="" size="20pt">
+						<center>
+							Liste des Reservation
+
+						</center>
+					</FONT>
+				</h2>
+			</center>
+
+			<table class="table table-striped">
+				{#{{form(studentSearch)}}#}
+
+				{#  <table class="table table-light table_hover table_bordered"> #}
+					<thead class="thead-dark"> <tr>
+						<th scope="col">ID</th>
+						<th scope="col">Titre Event</th>
+						<th scope="col">Date Reservation</th>
+						<th scope="col">Prix Reservation</th>
+						<th scope="col">ID Utilisateur</th>
+						<th scope="col">ID abonnement</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					{% for data in list %}
+						<tr>
+							<th scope="row">{{ data.id }}</th>
+							<td>{{ data.getEvenement().getTitreEvenement() }}</td>
+							<td>{{ data.getDateRes()|date("m/d/Y") }}</td>
+							<td>{{ data.getPrixRes() }}</td>
+							<td>{{ data.getUtilisateur().getId() }}</td>
+							<td>{{ data.getAbonnements().getId() }}</td>
+
+
+						</tr>
+					{% endfor %}
+
+
+				</tbody>
+			</table>
+
+			<br>
+			<br>
+
+			<br>
+			<br><br>
+			<br><br>
+			<br>
+			<br><br>
+			<br><br><br>
+			<br>
+
+
+		</div>
+	</html>
+
+{% endblock %}

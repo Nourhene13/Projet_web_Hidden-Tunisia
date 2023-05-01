@@ -1,0 +1,42 @@
+{% extends "basefront.html.twig" %}
+{% block body %}
+	<section class="our-blogs-section">
+		<div class="auto-container">
+			<div class="row clearfix">
+				{% for data in list %}
+					<div class="news-block-two style-two col-lg-6 col-md-12 col-sm-12">
+						<div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+							<div class="image">
+								<a href="{{ path('blog_details', {'id': data.id}) }}"><img src="{{asset('uploads/images/'~ data.getImage() )}}" alt=""/></a>
+							</div>
+							<div class="lower-content">
+								<div class="upper-box clearfix">
+									<div class="posted-date">{{ data.getCreatedAt()|date("m/d/Y") }}</div>
+									<ul class="post-meta">
+										<li>By :
+											{{ data.getUtilisateur() ? data.getUtilisateur().getNomUser() : ''  }}</li>
+										<li>{{ data.getCategory() }}</li>
+										<li>
+											<a href="{{ path('blog_details', {'id': data.id}) }}">Comments:
+												{{ data.getBlogComments()|length }}</a>
+										</li>
+									</ul>
+								</div>
+								<div class="lower-box">
+									<h3>
+										<a href="#">{{ data.getTitle() }}</a>
+									</h3>
+									<div class="text">{{ data.getContent() }}</div>
+									<a href="{{ path('blog_details',{'id': data.id }) }}" class="theme-btn read-more">Read more</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+				<h1>
+					{{  knp_pagination_render(blog_article) }}
+				</h1>
+			</div>
+		</div>
+	</section>
+{% endblock %}

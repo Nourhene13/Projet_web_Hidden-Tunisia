@@ -1,0 +1,34 @@
+{% extends "baseback.html.twig" %}
+{% block body %}
+	<div class="container">
+		{% for message in app.flashes('notice') %}
+			<div class="alert alert-success mt-4 mb-b">
+				{{ message }}
+			</div>
+		{% endfor %}
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">content</th>
+					<th scope="col">id user</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for data in list %}
+					<tr>
+						<th scope="row">{{ data.id }}</th>
+						<td>{{ data.getContent() }}</td>
+						<td>{{ data.getUtilisateur() ? data.getUtilisateur().getId()}}</td>
+						<td>
+							<a class="btn btn-warning" href="{{ path('update_dislikes',{'id': data.id }) }}">Update</a>
+							<a class="btn btn-danger" href="{{ path('delete_comment',{'id': data.id }) }}">Delete</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+{% endblock %}

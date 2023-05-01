@@ -1,0 +1,84 @@
+{% block body %}
+	<title>
+		{% block title %}PDF
+		{% endblock %}
+	</title>
+
+	<html style="border: 1px solid black; padding: 10px;">
+		<div class="container">
+
+			<img/>
+
+			<h2>
+				<FONT face="Script" color="red" size="40pt">
+
+					<center>
+						<center>Hidden Tunisia</center>
+
+					</center>
+
+				</FONT>
+			</h2>
+			<br>
+
+
+			<center>
+				<h2>
+					<center>
+						<FONT face="Script" color="" size="15pt"></center>
+						<center>
+							Liste des Abonnements
+
+						</center>
+					</FONT>
+				</h2>
+			</center>
+
+			<table class="table table-striped">
+				{#{{form(studentSearch)}}#}
+
+				{#  <table class="table table-light table_hover table_bordered"> #}
+					<thead class="thead-dark"> <tr>
+						<th scope="col">ID</th>
+						<th scope="col">Date Debut</th>
+						<th scope="col">Date D'expiration</th>
+						<th scope="col">Categorie</th>
+
+
+					</tr>
+				</thead>
+				<tbody>
+					{% for data in list %}
+						<tr>
+							<th scope="row">{{ data.id }}</th>
+
+							<td>{{ data.getDateAb()|date("m/d/Y") }}</td>
+							<td>{{ data.getDateExp()|date("m/d/Y") }}</td>
+
+
+							<td>{{ data.getCategorieAb() }}</td>
+
+
+						</tr>
+					{% endfor %}
+
+
+				</tbody>
+			</table>
+
+			<br>
+			<br>
+
+			<br>
+			<br><br>
+			<br><br>
+			<br>
+			<br><br>
+			<br><br><br>
+			<br>
+
+
+		</div>
+	</html>
+
+{% endblock %}

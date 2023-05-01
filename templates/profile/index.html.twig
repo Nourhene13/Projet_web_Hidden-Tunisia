@@ -1,0 +1,129 @@
+{% extends "basefrontparid.html.twig" %}
+{% block body %}
+	<div class="hero user-hero">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="hero-ct">
+						<h1>{{ lst.getNomUser() }}
+							{{ lst.getPrenomUser() }}’s profile</h1>
+						<ul class="breadcumb">
+							<li class="active">
+								<a href="#">Home</a>
+							</li>
+							<li>
+								<span class="ion-ios-arrow-right"></span>Profile</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="page-single">
+		<div class="container">
+
+			<div class="row ipad-width">
+				<div class="col-md-3 col-sm-12 col-xs-12">
+					<div class="user-information">
+						<div class="user-img">
+							<a href="#"><img src="{{ lst.getImage() }}" alt=""><br></a>
+							<a href="#" class="redbtn">Change avatar</a>
+						</div>
+						<div class="user-fav">
+							<p>Account Details</p>
+							<ul>
+								<li class="active">
+									<a href="userprofile.html">Profile</a>
+								</li>
+							</ul>
+						</div>
+						<div class="user-fav">
+							<p>Others</p>
+							<ul>
+								<li><a href="#">Log out</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-9 col-sm-12 col-xs-12">
+					<div class="form-style-1 user-pro" action="#">
+						<div class="user">
+							{{ form_start(ProfileForm) }}
+							<h4>01. Profile details</h4>
+							<div class="row">
+								<div class="col-md-6 form-it">
+									<label>First Name</label>
+									{{ form_widget(ProfileForm.nomUser) }}
+									{{ form_errors(ProfileForm.nomUser) }}
+								</div>
+								<div class="col-md-6 form-it">
+									<label>Last Name</label>
+									{{ form_widget(ProfileForm.prenomUser) }}
+									{{ form_errors(ProfileForm.prenomUser) }}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 form-it">
+									<label>numero telephone</label>
+									{{ form_widget(ProfileForm.numTel) }}
+									{{ form_errors(ProfileForm.numTel) }}
+								</div>
+								<div class="col-md-6 form-it">
+									<label>date Naissance</label>
+									{{ form_widget(ProfileForm.dateNaissance) }}
+									{{ form_errors(ProfileForm.dateNaissance) }}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 form-it">
+									<label>Email Address</label>
+									{{ form_widget(ProfileForm.email) }}
+									{{ form_errors(ProfileForm.email) }}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-2">
+									{{ form_rest(ProfileForm) }}
+									<input class="submit" type="submit" value="save">
+								</div>
+							</div>
+							{{ form_end(ProfileForm) }}
+						</div>
+						<div class="password">
+							<h4>02. Change password</h4>
+							{{ form_start(PasswordForm) }}
+							<div class="row">
+								<div class="col-md-6 form-it">
+									<label>Old Password</label>
+									{{ form_widget(PasswordForm.password,{'attr':{'placeholder':'**********'}}) }}
+									{{ form_errors(PasswordForm.password) }}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 form-it">
+									<label>New Password</label>
+									{{ form_widget(PasswordForm.nouvel_password,{'attr':{'placeholder':'**********'}}) }}
+									{{ form_errors(PasswordForm.nouvel_password) }}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 form-it">
+									<label>Confirm New Password</label>
+									{{ form_widget(PasswordForm.confirm_password,{'attr':{'placeholder':'**********'}}) }}
+									{{ form_errors(PasswordForm.confirm_password) }}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-2">
+									{{ form_rest(PasswordForm) }}
+									<input class="submit" type="submit" value="change">
+								</div>
+							</div>
+							{{ form_end(PasswordForm) }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

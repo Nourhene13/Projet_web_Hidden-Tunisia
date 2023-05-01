@@ -1,0 +1,56 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Hello MainController!
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		{% for message in app.flashes('notice') %}
+			<div class="alert alert-success mt-4 mb-b">
+				{{ message }}
+			</div>
+		{% endfor %}
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">nom_civilisation</th>
+					<th scope="col">nom_monument</th>
+					<th scope="col">date_dbuit_civilisation</th>
+					<th scope="col">date_fin_civilisation</th>
+					<th scope="col">description_civilisation</th>
+					<th scope="col">image</th>
+					<th scope="col">utilisateur</th>
+
+
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for data in list %}
+					<tr>
+						<th scope="row">{{ data.id }}</th>
+						<td>{{ data.getNomCivilisation() }}</td>
+						<td>{{ data.getNomMonument() }}</td>
+
+						<td>{{ data.getDateDbuitCivilisation|date("m/d/Y") }}</td>
+						<td>{{ data.getDateFinCivilisation()|date("m/d/Y") }}</td>
+
+
+						<td>{{ data.getDescriptionCivilisation() }}</td>
+						<td>{{ data.getImage() }}</td>
+						<td>{{ data.getUtilisateur().getNomUser() }}</td>
+
+						<td>
+							<a class="btn btn-warning" href="{{ path('update_civilisation',{'id': data.id }) }}">Update</a>
+							<a class="btn btn-danger" href="{{ path('delete_civilisation',{'id': data.id }) }}">Delete</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+
+
+{% endblock %}

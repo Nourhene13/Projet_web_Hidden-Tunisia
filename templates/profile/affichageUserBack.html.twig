@@ -1,0 +1,56 @@
+{% extends 'baseback.html.twig' %}
+
+
+{% block body %}
+	<section class="section">
+		<div class="section-body">
+			<div class="row">
+				<div class="col-12">
+					<div class="card">
+						<div class="card-header">
+							<h4>Export Table</h4>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-striped table-hover" id="tableExport" style="width:100%;">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Nom</th>
+											<th>Prenom</th>
+											<th>E-mail</th>
+											<th>Numero Telephone</th>
+											<th>Date Naissance</th>
+											<th>Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for data in list %}
+											<tr>
+												<th>{{ data.id }}</th>
+												<td>{{ data.nomUser }}</td>
+												<td>{{ data.prenomUser }}</td>
+												<td>{{ data.email }}</td>
+												<td>{{ data.numTel }}</td>
+												<td>{{ data.dateNaissance|date("m/d/Y") }}</td>
+												<td>
+													<a class="btn btn-warning" href="{{ path('update_user',{'id': data.id }) }}">Update</a>
+													<a class="btn btn-danger" href="{{ path('delete_user',{'id': data.id }) }}">Delete</a>
+													{% if data.isIsBlocked() %}
+														<a class="btn btn-warning" href="{{ path('deblock_user',{'id': data.id }) }}">Deblocker</a>
+													{% else %}
+														<a class="btn btn-danger" href="{{ path('block_user',{'id': data.id }) }}">Blocker</a>
+													{% endif %}
+												</td>
+											</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

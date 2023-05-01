@@ -1,0 +1,46 @@
+{% extends "baseback.html.twig" %}
+{% block body %}
+	<div class="container">
+		{% for message in app.flashes('notice') %}
+			<div class="alert alert-success mt-4 mb-b">
+				{{ message }}
+			</div>
+		{% endfor %}
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+
+					<th scope="col">title</th>
+					<th scope="col">content</th>
+					<th scope="col">author</th>
+					<th scope="col">image</th>
+					<th scope="col">id user</th>
+					<th scope="col">Category</th>
+					<th scope="col">State</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for data in list %}
+					<tr>
+						<th scope="row">{{ data.id }}</th>
+						<td>{{ data.getTitle() }}</td>
+						<td>{{ data.getContent() }}</td>
+						<td>{{ data.getAuthor() }}</td>
+						<td>{{ data.getImage() }}</td>
+						<td>{{ data.getUtilisateur() ? data.getUtilisateur().getId() : '' }}</td>
+						<td>{{ data.getCategory() }}</td>
+						<td>{{ data.getState() }}</td>
+
+
+						<td>
+							<a class="btn btn-warning" href="{{ path('update_article',{'id': data.id }) }}">Update</a>
+							<a class="btn btn-danger" href="{{ path('delete_article',{'id': data.id }) }}">Delete</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
