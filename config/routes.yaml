@@ -1,0 +1,17 @@
+# routes.yaml
+
+app_comment_like:
+    path: '/comment/{id}/like'
+    controller: 'App\Controller\BlogCommentController::like'
+    methods: ['POST']
+
+app_comment_dislike:
+    path: '/comment/{id}/dislike'
+    controller: 'App\Controller\BlogCommentController::dislike'
+    methods: ['POST']
+
+update_likes:
+  path: /update_likes
+  methods: ['POST']
+  defaults:
+    _controller: App\Controller\BlogCommentController::updateLikes
